@@ -43,23 +43,29 @@ function toggleStyle(id) {
 
 main.addEventListener("click", function (event) {
   if (event.target.classList.contains("interview-btn")) {
-    //   const pNode = event.target.closest(".card");
+    // const pNode = event.target.closest(".card");
     const pNode = event.target.parentNode.parentNode;
     //   console.log(event.target.parentNode.parentNode);
     const companyName = pNode.querySelector(".company").innerText;
     //   console.log(companyName);
     const position = pNode.querySelector(".position").innerText;
     const positionTimeSalary = pNode.querySelector(".time-salary").innerText;
+    const status = pNode.querySelector(".s-badge").innerText;
     const details = pNode.querySelector(".details").innerText;
 
     const cardInfo = {
       companyName,
       position,
       positionTimeSalary,
+      status,
       details,
     };
 
     const companyExist = interviewList.find((item) => item.companyName == cardInfo.companyName);
+    pNode.querySelector(".s-badge").innerHTML = `<span class="s-badge py-[8px] px-[16px] border border-[#10B981] text-[#10B981]">INTERVIEWD</span>
+`;
+    // status.classList.remove("bg-[#EEF4FF]");
+
     if (!companyExist) {
       interviewList.push(cardInfo);
     }
