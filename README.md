@@ -15,7 +15,7 @@
 
     when an event happens, the browser handles it in 3 phases:
 
-    - First, the event starts from the top of the dom tree, then it      moves downward toward the element that was clicked.
+    - First, the event starts from the top of the dom tree, then it moves downward toward the element that was clicked.
     - then comes target phase where the event reaches the actual element that was clicked
     -then after reaching the target the event moves back upward,
     for example: child -> parent -> grandparent -> body -> html -> document
