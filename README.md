@@ -7,13 +7,13 @@
 
 ### 2. How to create and insert a new element into the DOM?
 
-    first we need to create element by createElement() method, then add the content after that we just need to insert it into dom.
+    First we need to create element by createElement() method, then add the content after that we just need to insert it into dom.
 
 ### 3. What is Event Bubbling? And how does it work?
 
-    whenever a child element is clicked than if goes up to it's parent than it's grandparent and finally it goes to body.
+    Whenever a child element is clicked than it goes up to it's parent than it's grandparent and finally it goes to body.
 
-    when an event happens, the browser handles it in 3 phases:
+    When an event happens, the browser handles it in 3 phases:
 
     - First, the event starts from the top of the dom tree, then it moves downward toward the element that was clicked.
     - then comes target phase where the event reaches the actual element that was clicked
@@ -24,7 +24,9 @@
 
     In event bubling we add event to many child elements but in delegation we add event to parent
 
-    It is useful for performance efficiency like instead of adding 100 event listners, we will just add only one. If new elements are added later using Java Script that will still work automatically. We don't need to add new event listners again.
+    It is useful for performance efficiency like instead of adding 100 event listners, 
+    we will just add only one. If new elements are added later using Java Script that will still work automatically. 
+    We don't need to add new event listners again.
 
 ### 5. Difference between preventDefault() and stopPropagation()
 
