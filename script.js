@@ -78,6 +78,7 @@ const filteredSection = document.getElementById("filtered-section");
 const allBtn = document.getElementById("all-filter-btn");
 const interviewBtn = document.getElementById("interview-filter-btn");
 const rejectedBtn = document.getElementById("rejected-filter-btn");
+const deleteBtn = document.querySelector("cardData");
 
 // const count = allCardSection.children.length;
 // console.log(count);
@@ -241,6 +242,44 @@ function renderAll() {
   calculateCount();
 }
 renderAll();
+
+main.addEventListener("click", function (event) {
+  if (event.target.classList.contains("delete")) {
+    const pNode = event.target.parentNode.parentNode;
+    const companyName = pNode.querySelector(".company").innerText;
+    const filteredData = cardDetails?.filter((d) => d.companyName !== companyName);
+    cardDetails = filteredData;
+    renderDeleteInterview(filteredData);
+  }
+});
+
+function renderDeleteInterview(filterData) {
+  allCardSection.innerHTML = "";
+  for (let interview of filterData) {
+    let div = document.createElement("div");
+    div.className = "flex justify-between shadow-sm rounded-md p-[24px]";
+    div.innerHTML = `
+            <div class="left-side space-y-[20px]">
+            <div>
+              <h2 class="company text-xl text-[#002C5C] font-bold">${interview.companyName}</h2>
+              <p class="position text-xl text-[#64748B]">${interview.position}</p>
+            </div>
+            <p class="time-salary text-xl text-[#64748B]">${interview.positionTimeSalary}</p>
+            <span class="s-badge py-[8px] bg-[#EEF4FF] text-[#002C5C]">${interview.badge}</span>            
+            <p class="details text-xl mt-[16px]">${interview.details}</p>
+            <div>
+              <button class="btn interview-btn border border-[#10B981] text-[#10B981]">INTERVIEW</button>
+              <button class="btn rejected-btn border border-[#EF4444] text-[#EF4444]">REJECTED</button>
+            </div>
+          </div>
+          <div class="right-side">
+            <span class="btn w-[50px] h-[50px] rounded-full delete"><i class="fa-regular fa-trash-can"></i></span>
+          </div>
+        `;
+    allCardSection.appendChild(div);
+  }
+  calculateCount();
+}
 
 function renderInterview() {
   filteredSection.innerHTML = "";
