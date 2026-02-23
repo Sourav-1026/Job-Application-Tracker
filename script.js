@@ -158,8 +158,16 @@ main.addEventListener("click", function (event) {
       interviewList.push(cardInfo);
     }
 
+    rejectedList = rejectedList.filter((item) => item.companyName != cardInfo.companyName);
+    if (currentStatus == "rejected-filter-btn") {
+      if (rejectedList.length) {
+        renderRejected();
+      } else {
+        renderNoJobAvailable();
+      }
+    }
     calculateCount();
-    renderInterview();
+    // renderInterview();
 
     // console.log(interviewList);
   } else if (event.target.classList.contains("rejected-btn")) {
@@ -191,9 +199,16 @@ main.addEventListener("click", function (event) {
     if (!companyExist) {
       rejectedList.push(cardInfo);
     }
-
+    interviewList = interviewList.filter((item) => item.companyName != cardInfo.companyName);
+    if (currentStatus == "interview-filter-btn") {
+      if (interviewList.length) {
+        renderInterview(); //new line
+      } else {
+        renderNoJobAvailable();
+      }
+    }
     calculateCount();
-    renderRejected();
+    // renderRejected();
   }
 });
 
@@ -281,4 +296,16 @@ function renderRejected() {
         `;
     filteredSection.appendChild(div);
   }
+}
+
+function renderNoJobAvailable() {
+  filteredSection.innerHTML = "";
+  let div = document.createElement("div");
+  div.className = "flex justify-between shadow-sm rounded-md p-[24px]";
+  div.innerHTML = `
+            <div class="left-side space-y-[20px]">
+            <img src="/jobs.png" alt="job"/>
+            </div>
+        `;
+  filteredSection.appendChild(div);
 }
