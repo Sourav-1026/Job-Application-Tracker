@@ -115,6 +115,7 @@ function toggleStyle(id) {
       renderInterview();
     } else {
       renderNoJobAvailable();
+      totalSideCount.innerText = 0;
     }
   } else if (id == "all-filter-btn") {
     allCardSection.classList.remove("hidden");
@@ -130,6 +131,7 @@ function toggleStyle(id) {
       renderRejected();
     } else {
       renderNoJobAvailable();
+      totalSideCount.innerText = 0;
     }
   }
 }
