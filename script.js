@@ -369,7 +369,7 @@ function renderNoJobAvailable() {
   div.className = "shadow-sm rounded-md p-[24px]";
   div.innerHTML = `
             <div class="left-side flex flex-col justify-center items-center space-y-[20px]">
-            <img src="jobs.png" alt="job" class="mt-[111px]"/>
+            <img src="./jobs.png" alt="job" class="mt-[111px]"/>
             <h2 class= "text-xl text-[#002C5C] font-semibold">No jobs available</h2>
             <p class= "text-[#64748B] mb-[111px]">Check back soon for new job opportunities</p>
             </div>
