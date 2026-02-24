@@ -60,7 +60,7 @@ let cardDetails = [
 let allCard = [];
 let interviewList = [];
 let rejectedList = [];
-let currentStatus = "all";
+let currentStatus = "all-filter-btn";
 
 let totalCount = document.getElementById("total-count");
 let interviewCount = document.getElementById("interview-count");
@@ -74,7 +74,6 @@ const filteredSection = document.getElementById("filtered-section");
 const allBtn = document.getElementById("all-filter-btn");
 const interviewBtn = document.getElementById("interview-filter-btn");
 const rejectedBtn = document.getElementById("rejected-filter-btn");
-const deleteBtn = document.querySelector("cardData");
 
 function calculateCount() {
   totalCount.innerText = allCard.length;
@@ -89,8 +88,6 @@ function calculateCount() {
     totalSideCount.innerText = rejectedList.length;
   }
 }
-
-// calculateCount();
 
 function toggleStyle(id) {
   allBtn.classList.remove("bg-[#3B82F6]", "text-white");
@@ -118,7 +115,6 @@ function toggleStyle(id) {
     }
   } else if (id == "all-filter-btn") {
     allCardSection.classList.remove("hidden");
-    // rejectedBtn.classList.add("hidden");
     filteredSection.classList.add("hidden");
     totalSideCount.innerText = allCard.length;
     if (allCard?.length) {
@@ -128,7 +124,6 @@ function toggleStyle(id) {
     }
   } else if (id == "rejected-filter-btn") {
     allCardSection.classList.add("hidden");
-    // interviewBtn.classList.add("hidden");
     filteredSection.classList.remove("hidden");
     totalSideCount.innerText = rejectedList.length;
     if (rejectedList.length) {
@@ -141,7 +136,6 @@ function toggleStyle(id) {
 
 main.addEventListener("click", function (event) {
   if (event.target.classList.contains("interview-btn")) {
-    // const pNode = event.target.closest(".card");
     const pNode = event.target.parentNode.parentNode;
     const companyName = pNode.querySelector(".company").innerText;
     const position = pNode.querySelector(".position").innerText;
@@ -149,9 +143,7 @@ main.addEventListener("click", function (event) {
     const badge = pNode.querySelector(".s-badge").innerText;
     const details = pNode.querySelector(".details").innerText;
 
-    // const badge = pNode.querySelector(".s-badge");
     pNode.querySelector(".s-badge").innerHTML = `<span class="s-badge py-[8px] px-[16px] bg-[#10B981] text-white">INTERVIEWD</span>`;
-    // badge.className = "s-badge py-[8px] px-[16px] bg-[#10B981] text-white";
 
     const cardInfo = {
       companyName,
@@ -168,9 +160,8 @@ main.addEventListener("click", function (event) {
       interviewList.push(cardInfo);
     }
 
-    rejectedList = rejectedList.filter((item) => item.companyName != cardInfo.companyName); //new line
+    rejectedList = rejectedList.filter((item) => item.companyName != cardInfo.companyName);
     if (currentStatus == "rejected-filter-btn") {
-      //new line
       if (rejectedList.length) {
         renderRejected();
       } else {
@@ -188,9 +179,7 @@ main.addEventListener("click", function (event) {
     const badge = pNode.querySelector(".s-badge").innerText;
     const details = pNode.querySelector(".details").innerText;
 
-    // const badge = pNode.querySelector(".s-badge");
     pNode.querySelector(".s-badge").innerHTML = `<span class="s-badge py-[8px] px-[16px] bg-[#EF4444] text-white">REJECTED</span>`;
-    // badge.className = "s-badge py-[8px] px-[16px] bg-[#10B981] text-white";
 
     const cardInfo = {
       companyName,
@@ -203,17 +192,14 @@ main.addEventListener("click", function (event) {
     allCard = updatedAllCard;
     const companyExist = rejectedList.find((item) => item.companyName == cardInfo.companyName);
 
-    // status.classList.remove("bg-[#EEF4FF]");
-
     if (!companyExist) {
       rejectedList.push(cardInfo);
     }
 
-    interviewList = interviewList.filter((item) => item.companyName != cardInfo.companyName); //new liine
+    interviewList = interviewList.filter((item) => item.companyName != cardInfo.companyName);
     if (currentStatus == "interview-filter-btn") {
-      //newn line
       if (interviewList.length) {
-        renderInterview(); //new line
+        renderInterview();
       } else {
         renderNoJobAvailable();
       }
@@ -290,35 +276,28 @@ main.addEventListener("click", function (event) {
   const pNode = deleteBtn.parentNode.parentNode;
   const companyName = pNode.querySelector(".company").innerText;
 
-  // If deleting from ALL section
   if (currentStatus === "all-filter-btn") {
-    allCard = allCard.filter((d) => d.companyName !== companyName);
-    interviewList = interviewList.filter((d) => d.companyName !== companyName);
-    rejectedList = rejectedList.filter((d) => d.companyName !== companyName);
+    allCard = allCard.filter((data) => data.companyName !== companyName);
+    cardDetails = cardDetails.filter((data) => data.companyName !== companyName);
+
+    interviewList = interviewList.filter((data) => data.companyName !== companyName);
+    rejectedList = rejectedList.filter((data) => data.companyName !== companyName);
 
     renderUpdateCard();
-  }
+  } else if (currentStatus === "interview-filter-btn") {
+    interviewList = interviewList.filter((data) => data.companyName !== companyName);
 
-  // If deleting from Interview section
-  else if (currentStatus === "interview-filter-btn") {
-    interviewList = interviewList.filter((d) => d.companyName !== companyName);
-
-    // Reset badge in main list
-    allCard = allCard.map((d) => (d.companyName === companyName ? { ...d, badge: "NOT APPLIED" } : d));
+    allCard = allCard.map((data) => (data.companyName === companyName ? { ...data, badge: "NOT APPLIED" } : data));
 
     if (interviewList.length) {
       renderInterview();
     } else {
       renderNoJobAvailable();
     }
-  }
+  } else if (currentStatus === "rejected-filter-btn") {
+    rejectedList = rejectedList.filter((data) => data.companyName !== companyName);
 
-  // If deleting from Rejected section
-  else if (currentStatus === "rejected-filter-btn") {
-    rejectedList = rejectedList.filter((d) => d.companyName !== companyName);
-
-    // Reset badge in main list
-    allCard = allCard.map((d) => (d.companyName === companyName ? { ...d, badge: "NOT APPLIED" } : d));
+    allCard = allCard.map((data) => (data.companyName === companyName ? { ...data, badge: "NOT APPLIED" } : data));
 
     if (rejectedList.length) {
       renderRejected();
@@ -329,34 +308,6 @@ main.addEventListener("click", function (event) {
 
   calculateCount();
 });
-
-function renderDeleteInterview(filterData) {
-  allCardSection.innerHTML = "";
-  for (let interview of filterData) {
-    let div = document.createElement("div");
-    div.className = "flex justify-between shadow-sm rounded-md p-[24px]";
-    div.innerHTML = `
-            <div class="left-side space-y-[20px]">
-            <div>
-              <h2 class="company text-xl text-[#002C5C] font-bold">${interview.companyName}</h2>
-              <p class="position text-xl text-[#64748B]">${interview.position}</p>
-            </div>
-            <p class="time-salary text-xl text-[#64748B]">${interview.positionTimeSalary}</p>
-            <span class="s-badge py-[8px] bg-[#EEF4FF] text-[#002C5C]">${interview.badge}</span>            
-            <p class="details text-xl mt-[16px]">${interview.details}</p>
-            <div>
-              <button class="btn interview-btn border border-[#10B981] text-[#10B981]">INTERVIEW</button>
-              <button class="btn rejected-btn border border-[#EF4444] text-[#EF4444]">REJECTED</button>
-            </div>
-          </div>
-          <div class="right-side">
-            <span class="btn w-[50px] h-[50px] rounded-full delete"><i class="fa-regular fa-trash-can"></i></span>
-          </div>
-        `;
-    allCardSection.appendChild(div);
-  }
-  // calculateCount();
-}
 
 function renderInterview() {
   filteredSection.innerHTML = "";
@@ -370,7 +321,7 @@ function renderInterview() {
               <p class="position text-xl text-[#64748B]">${interview.position}</p>
             </div>
             <p class="time-salary text-xl text-[#64748B]">${interview.positionTimeSalary}</p>
-            <span class="s-badge py-[8px] px-[16px] bg-[#10B981] text-white">INTERVIEWED</span>            
+            <span class="s-badge py-[8px] px-[16px] bg-[#10B981] text-white">INTERVIEWED</span>
             <p class="details text-xl mt-[16px]">${interview.details}</p>
             <div>
               <button class="btn interview-btn border border-[#10B981] text-[#10B981]">INTERVIEW</button>
