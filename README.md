@@ -1,48 +1,29 @@
-### 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
+# 🎯 Job Application Tracker Website
 
-    -getElementById uses id and return one element
-    -getElementsByClassName uses class and return many element
-    -querySelector uses CSS selector and return the first match
-    -querySelectorAll uses CSS selector and return all matches
+## 📄 Description
 
-### 2. How to create and insert a new element into the DOM?
+- A simple and interactive digital tools marketplace. Users can browse tools, add them to their cart, manage items, and proceed to checkout smoothly. The goal of this project is to simulate a real-world e-commerce workflow with a clean UI and dynamic functionality.
 
-    First we need to create element by createElement() method, then add the content after that we just need to insert it into dom.
-    First we need to create element by createElement() method,
-    then add the content after that we just need to insert it into dom.
+---
 
-### 3. What is Event Bubbling? And how does it work?
+## ⚙️ Technologies Used
 
-    Whenever a child element is clicked than it goes up to it's parent than it's grandparent and finally it goes to body.
-    First we need to create element by createElement() method,
-    then add the content after that we just need to insert it into dom.
+- React.js
+- Tailwind CSS, DaisyUI
+- JavaScript (ES6+)
+- React-Toastify (NPM Package)
+- JSON (for product data)
 
-### 3. What is Event Bubbling? And how does it work?
+---
 
-    Whenever a child element is clicked than it goes up to it's parent
-    than it's grandparent
-    and finally it goes to body.
+## ✨ 3 Features About My Project
 
-    When an event happens, the browser handles it in 3 phases:
+- 🛍️ Add to Cart – Users can easily add digital products to their cart with a single click.
+- 🗑️ Remove Items – Items can be removed from the cart anytime for better control.
+- 💳 Checkout Flow – Smooth checkout process to simulate a real shopping experience.
 
-    - First, the event starts from the top of the dom tree, then it moves downward toward the element that was clicked.
-    - then comes target phase where the event reaches the actual element that was clicked
-    -then after reaching the target the event moves back upward,
-    for example: child -> parent -> grandparent -> body -> html -> document
+---
 
-### 4. What is Event Delegation in Java Script? Why is it useful?
+## 🚀 Live Demo
 
-    In event bubling we add event to many child elements but in delegation we add event to parent
-
-    It is useful for performance efficiency like instead of adding 100 event listners,
-    we will just add only one. If new elements are added later using Java Script that will still work automatically.
-    It is useful for performance efficiency like instead of adding 100 event listners,
-    we will just add only one. If new elements are added later using Java Script that will still work automatically.
-    It is useful for performance efficiency like instead of adding 20 or 50 event listners,
-    we will just add only one. If new elements are added later using Java Script that will still work automatically.
-    We don't need to add new event listners again.
-
-### 5. What is the difference between preventDefault() and stopPropagation() methods?
-
-        - preventDefault() stops the default browser behaviour
-        - stopPropagation() stops event from bubling
+🔗 https://digital-tools-1026.netlify.app/
