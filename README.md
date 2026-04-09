@@ -1,26 +1,24 @@
-# 🎯 Job Application Tracker Website
+# 💼 Job Application Tracker Website
 
 ## 📄 Description
 
-- A simple and interactive digital tools marketplace. Users can browse tools, add them to their cart, manage items, and proceed to checkout smoothly. The goal of this project is to simulate a real-world e-commerce workflow with a clean UI and dynamic functionality.
+- A simple and interactive job tracking application where users can manage their job applications efficiently. Users can browse different tech job listings, mark them as Interview or Rejected, and organize them into specific tabs. The project focuses on improving productivity by helping users track their job application status in a clean and structured way.
 
 ---
 
 ## ⚙️ Technologies Used
 
-- React.js
+- Html
 - Tailwind CSS, DaisyUI
 - JavaScript (ES6+)
-- React-Toastify (NPM Package)
-- JSON (for product data)
 
 ---
 
 ## ✨ 3 Features About My Project
 
-- 🛍️ Add to Cart – Users can easily add digital products to their cart with a single click.
-- 🗑️ Remove Items – Items can be removed from the cart anytime for better control.
-- 💳 Checkout Flow – Smooth checkout process to simulate a real shopping experience.
+- 📌 Status Management – Mark jobs as Interview or Rejected and automatically move them to the respective tabs.
+- 🏷️ Dynamic Badges – Each job card displays a badge indicating its current status (Interview / Rejected).
+- 🗑️ Flexible Deletion – Remove job cards from any section (All Jobs, Interview, or Rejected) instantly.
 
 ---
 
